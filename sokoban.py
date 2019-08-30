@@ -38,6 +38,13 @@ while True:
         screen.pixel(x+dx+dx, y+dy+dy, 3 if behind == 0 else 7)
         x += dx
         y += dy
+    count = 0
+    for b in range(8):
+        for a in range(8):
+            if screen.pixel(a, b) == 2:
+                count += 1
+    if count == 0:
+        break
     screen.pixel(x, y, (3 if blink else 2) + (4 if screen.pixel(x, y) in {2, 7} else 0))
     blink = not blink
     pew.show(screen)

@@ -18,14 +18,20 @@ y = 1
 while True:
     screen.pixel(x, y, 0)
     keys = pew.keys()
+    dx = 0
+    dy = 0
     if keys & pew.K_UP:
-        y -= 1
+        dy = -1
     elif keys & pew.K_DOWN:
-        y += 1
+        dy = 1
     elif keys & pew.K_LEFT:
-        x -= 1
+        dx = -1
     elif keys & pew.K_RIGHT:
-        x += 1
+        dx = 1
+    target = screen.pixel(x+dx, y+dy)
+    if target == 0:
+        x += dx
+        y += dy
     screen.pixel(x, y, 3)
     pew.show(screen)
     pew.tick(1/6)

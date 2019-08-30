@@ -34,8 +34,8 @@ while True:
     if target in {0, 2}:
         x += dx
         y += dy
-    elif target == 3 and behind in {0, 2}:
-        screen.pixel(x+dx+dx, y+dy+dy, 3)
+    elif target in {3, 7} and behind in {0, 2}:
+        screen.pixel(x+dx+dx, y+dy+dy, 3 if behind == 0 else 7)
         x += dx
         y += dy
     screen.pixel(x, y, (3 if blink else 2) + (4 if screen.pixel(x, y) in {2, 7} else 0))

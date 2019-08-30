@@ -17,7 +17,7 @@ y = 1
 blink = True
 
 while True:
-    screen.pixel(x, y, 0)
+    screen.pixel(x, y, 0 if screen.pixel(x, y) < 4 else 2)
     keys = pew.keys()
     dx = 0
     dy = 0
@@ -38,7 +38,7 @@ while True:
         screen.pixel(x+dx+dx, y+dy+dy, 3)
         x += dx
         y += dy
-    screen.pixel(x, y, 3 if blink else 2)
+    screen.pixel(x, y, (3 if blink else 2) + (4 if screen.pixel(x, y) in {2, 7} else 0))
     blink = not blink
     pew.show(screen)
     pew.tick(1/6)

@@ -6,7 +6,7 @@ screen = pew.Pix.from_iter((
     (1, 0, 0, 0, 0, 0, 0, 1),
     (1, 0, 0, 0, 0, 0, 0, 1),
     (1, 0, 0, 0, 0, 0, 0, 1),
-    (1, 0, 0, 0, 0, 0, 0, 1),
+    (1, 0, 0, 3, 0, 0, 0, 1),
     (1, 0, 0, 0, 0, 0, 0, 1),
     (1, 0, 0, 0, 0, 0, 0, 1),
     (1, 1, 1, 1, 1, 1, 1, 1),
@@ -30,6 +30,10 @@ while True:
         dx = 1
     target = screen.pixel(x+dx, y+dy)
     if target == 0:
+        x += dx
+        y += dy
+    elif target == 3:
+        screen.pixel(x+dx+dx, y+dy+dy, 3)
         x += dx
         y += dy
     screen.pixel(x, y, 3)

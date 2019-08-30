@@ -29,10 +29,11 @@ while True:
     elif keys & pew.K_RIGHT:
         dx = 1
     target = screen.pixel(x+dx, y+dy)
+    behind = screen.pixel(x+dx+dx, y+dy+dy)
     if target == 0:
         x += dx
         y += dy
-    elif target == 3:
+    elif target == 3 and behind == 0:
         screen.pixel(x+dx+dx, y+dy+dy, 3)
         x += dx
         y += dy

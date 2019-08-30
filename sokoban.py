@@ -14,6 +14,7 @@ screen = pew.Pix.from_iter((
 
 x = 4
 y = 1
+blink = True
 
 while True:
     screen.pixel(x, y, 0)
@@ -37,6 +38,7 @@ while True:
         screen.pixel(x+dx+dx, y+dy+dy, 3)
         x += dx
         y += dy
-    screen.pixel(x, y, 3)
+    screen.pixel(x, y, 3 if blink else 2)
+    blink = not blink
     pew.show(screen)
     pew.tick(1/6)
